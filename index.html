@@ -10,6 +10,20 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<!-- PASSWORD GATE -->
+<div class="password-gate" id="passwordGate">
+<div class="password-gate__box">
+<h2 class="password-gate__title">Prezentacja chroniona hasłem</h2>
+<p class="password-gate__desc">Podaj hasło, aby kontynuować</p>
+<form class="password-gate__form" id="passwordForm">
+<input class="password-gate__input" id="passwordInput" type="password" placeholder="Hasło" autocomplete="off" autofocus>
+<button class="password-gate__btn" type="submit">Wejdź</button>
+</form>
+<p class="password-gate__error" id="passwordError"></p>
+</div>
+</div>
+
 <!-- ANIMATED DOTS CANVAS -->
 <canvas id="dotsCanvas" class="dots-canvas"></canvas>
 
@@ -524,6 +538,37 @@ Sekcje są powtarzalne: obrazek po lewej, copy po prawej. To powoduje efekt: scr
 </button>
 </nav>
 
+<script>
+(function(){
+  var hash = '1e4f52a959f00546bff6e2f2adf6bbea729b86ae97c1032aa7330c1148761bc4';
+  var gate = document.getElementById('passwordGate');
+  var form = document.getElementById('passwordForm');
+  var input = document.getElementById('passwordInput');
+  var error = document.getElementById('passwordError');
+
+  if (sessionStorage.getItem('xopero_auth') === hash) {
+    gate.classList.add('password-gate--hidden');
+  }
+
+  async function sha256(msg) {
+    var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+    return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var h = await sha256(input.value);
+    if (h === hash) {
+      sessionStorage.setItem('xopero_auth', hash);
+      gate.classList.add('password-gate--hidden');
+    } else {
+      error.textContent = 'Nieprawidłowe hasło';
+      input.value = '';
+      input.focus();
+    }
+  });
+})();
+</script>
 <script src="script.js"></script>
 </body>
 </html>
