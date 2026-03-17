@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Optymalizacja landing page GitProtect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- ANIMATED DOTS CANVAS -->
+<canvas id="dotsCanvas" class="dots-canvas"></canvas>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="18">
+<div class="progress-bar__fill" id="progressFill"></div>
+</div>
+
+<!-- SLIDES CONTAINER -->
+<main class="deck" id="deck" aria-live="polite">
+
+<!-- SLIDE 01 — COVER -->
+<section class="slide slide--cover" id="slide-01" data-slide="01" aria-label="Slajd 1: Okładka">
+<div class="slide__inner slide--cover__layout">
+<div class="slide__content anim-stagger">
+<span class="slide__chip anim-item">Slajd 01</span>
+<h1 class="slide__title slide__title--hero anim-item">
+Optymalizacja landing page <span class="text-accent">GitProtect</span> pod wzrost konwersji
+</h1>
+<p class="slide__subtitle anim-item">
+Jak zwiększyć przejścia do Sign up o 15% bez redesignu strony
+</p>
+<div class="chip-group anim-item">
+<span class="chip">analiza problemu</span>
+<span class="chip">hipotezy projektowe</span>
+<span class="chip">projekt hi-fi i walidacja</span>
+</div>
+</div>
+<div class="slide__visual slide__visual--single anim-item anim-item--delay-4">
+<div class="image-slot" data-src="screens/1.png" data-label="Okładka — wizualizacja hero" data-ratio="16:10"></div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 02 — PROBLEMY STRONY -->
+<section class="slide" id="slide-02" data-slide="02" aria-label="Slajd 2: Problemy strony">
+<div class="slide__inner anim-stagger">
+<span class="slide__chip anim-item">Slajd 02</span>
+<h2 class="slide__title anim-item">Co dziś jest największym problemem tej strony?</h2>
+
+<div class="problems-grid anim-item">
+<div class="problem-card problem-card--accent">
+<span class="problem-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+<p>Hero jest efektowny, ale nie odpowiada szybko na najważniejsze pytania</p>
+</div>
+<div class="problem-card problem-card--accent">
+<span class="problem-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h3m8-18h3c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2h-3m-8-2h8"/></svg></span>
+<p>Double sticky header „zasłania" ekran użytkownikom z mniejszymi rozdzielczościami</p>
+</div>
+<div class="problem-card problem-card--accent">
+<span class="problem-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+<p>Brak Social Proof Above the Fold — najmocniejsze elementy zaufania za nisko</p>
+</div>
+<div class="problem-card problem-card--accent">
+<span class="problem-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 5 12 19"/><polyline points="19 12 12 19 5 12"/></svg></span>
+<p>Problem użytkownika jest na samym dole strony</p>
+</div>
+<div class="problem-card problem-card--accent">
+<span class="problem-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+<p>Strona sprzedaje bardziej „dashboard" niż redukcję ryzyka</p>
+</div>
+<div class="problem-card problem-card--accent">
+<span class="problem-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2-8.83"/></svg></span>
+<p>Za dużo podobnych sekcji, za mało progresji narracji</p>
+</div>
+<div class="problem-card problem-card--accent">
+<span class="problem-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+<p>Jedna strona próbuje mówić do kilku person jednocześnie</p>
+</div>
+<div class="problem-card problem-card--accent">
+<span class="problem-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></span>
+<p>Copywriting wymaga optymalizacji</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 03 — WSKAŹNIKI -->
+<section class="slide" id="slide-03" data-slide="03" aria-label="Slajd 3: Wskaźniki">
+<div class="slide__inner anim-stagger">
+<span class="slide__chip anim-item">Slajd 03</span>
+<h2 class="slide__title anim-item">Jak zwiększyć inne wskaźniki?</h2>
+
+<div class="metrics-split anim-item">
+<div class="metric-block">
+<div class="metric-block__header">
+<span class="metric-block__badge">Scroll depth</span>
+<span class="metric-block__target">18% → 45%</span>
+</div>
+<p class="metric-block__body">
+Użytkownicy z płatnych reklam (Google Ads / LinkedIn Ads) mają bardzo mało cierpliwości. Klikają, bo mają konkretny problem (np. szukają backupu po incydencie), ale możliwe jest też, że po prostu zaciekawiła ich reklama.
+</p>
+<p class="metric-block__body">Jeśli w ciągu <strong>3–5 sekund</strong> nie upewnią się, że są we właściwym miejscu i nie poczują zaufania opuszczają stronę.</p>
+</div>
+
+<div class="metric-block">
+<div class="metric-block__header">
+<span class="metric-block__badge">Views per active user</span>
+<span class="metric-block__target">1.2 → 3.1</span>
+</div>
+<p class="metric-block__body">
+Obecnie strona to długi landing page. Jeśli chcemy zwiększyć liczbę odsłon na użytkownika, musimy inteligentnie linkować do innych zasobów na wcześniejszych etapach ścieżki.
+</p>
+<p class="metric-block__body">Np. cennik, szczegółowe use-case'y, security page, case studies, a nie tylko wymuszać konwersję na Trial.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 04 — HERO PROBLEM -->
+<section class="slide" id="slide-04" data-slide="04" aria-label="Slajd 4: Problem hero">
+<div class="slide__inner slide--split anim-stagger" style="grid-template-columns: 1fr 500px;">
+<div class="anim-item">
+<span class="slide__chip">Slajd 04</span>
+<h2 class="slide__title">Hero jest efektowny, ale nie odpowiada szybko na najważniejsze pytania</h2>
+<p class="slide__lead">
+Pierwsza sekcja pod Hero to „Time-savvy enterprise GitHub backups". Grafika jest estetyczna, ale komunikat jest dość standardowy — „Robimy zautomatyzowane backupy". Sformułowanie nie rozwiązuje żadnego problemu. Brzmi jak slogan, a nie obietnica wartości. Opis też jest zdecydowanie za długi. Użytkownik z reklamy skanuje stronę w 3 sekundy.
+</p>
+<div class="insight-box">
+<p>Dyrektora z branży <strong>Healthcare / FinTech</strong> interesuje bezpieczeństwo, zgodność z prawem i uniknięcie katastrofy. Tu zaczynamy od funkcji, zamiast od zbudowania zaufania lub uświadomienia ryzyka.</p>
+</div>
+</div>
+<div class="slide__visual anim-item">
+<div class="image-slot" data-src="screens/time-savvy.png" data-label="Time-savvy sekcja" data-ratio="16:10"></div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 05 — HIPOTEZA 1: SOCIAL PROOF -->
+<section class="slide" id="slide-05" data-slide="05" aria-label="Slajd 5: Hipoteza social proof">
+<div class="slide__inner slide--centered anim-stagger">
+<span class="slide__chip anim-item">Slajd 05</span>
+<div class="hypothesis-hero anim-item">
+<h2 class="slide__title">Hipotezy i propozycje optymalizacji</h2>
+<p class="hypothesis-hero__statement">Zwiększenie zaufania natychmiast po wejściu na stronę zwiększy scroll depth.</p>
+</div>
+
+<div class="two-col-cards anim-item">
+<div class="optim-card">
+<div class="optim-card__label">Optymalizacja</div>
+<p>Przeniesienie logo <strong>„Trusted by…"</strong> (najlepiej logo od Healthcare & MedTech) oraz małe badge <strong>G2 High Performer</strong> bezpośrednio pod sekcję Hero — zanim użytkownik zacznie scrollować.</p>
+</div>
+<div class="why-card">
+<div class="why-card__label">Dlaczego to zadziała</div>
+<p>Osoby z branż regulowanych od razu widzą, że inni „więksi" już wam zaufali.</p>
+</div>
+</div>
+
+<div class="before-after-screens anim-item">
+<div class="ba-screen">
+<div class="image-slot" data-src="screens/before.png" data-label="Przed optymalizacją" data-ratio="16:10"></div>
+<span class="ba-screen__caption">Przed optymalizacją</span>
+</div>
+<div class="ba-screen">
+<div class="image-slot" data-src="screens/After.png" data-label="Po optymalizacji" data-ratio="16:10"></div>
+<span class="ba-screen__caption">Po optymalizacji</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 06 — HIPOTEZA 2: RYZYKO -->
+<section class="slide" id="slide-06" data-slide="06" aria-label="Slajd 6: Edukacja o ryzyku">
+<div class="slide__inner slide--centered anim-stagger">
+<span class="slide__chip anim-item">Slajd 06</span>
+<h2 class="slide__title anim-item">Edukacja o „ryzyku" na wczesnym etapie</h2>
+<p class="slide__lead anim-item">…zatrzyma uwagę i zachęci do czytania (wzrost scroll depth).</p>
+
+<div class="two-col-cards anim-item">
+<div class="optim-card">
+<div class="optim-card__label">Optymalizacja</div>
+<p>Przeniesienie ciemnej sekcji <strong>„Still think your data is already backed-up?"</strong> z cytatem z GitHub ToS znacznie wyżej. Przeprojektowanie na bardziej interaktywny moduł np. zakładki z ToS GitHuba, GitLaba, Bitbucketa. Dodatkowo kilka zmian wizualnych. Kolor secondary text nie jest spójny z hero. Text na buttonie nie przechodzi walidacji kontrastu (AA) dla normalnego tekstu. </p>
+</div>
+<div class="why-card">
+<div class="why-card__label">Dlaczego to zadziała</div>
+<p>W pierwszej kolejności uderzamy w ból użytkownika. Uświadamiamy mu, że jego natywne narzędzia nie dają bezpieczeństwa. To wywołuje zaciekawienie i chęć poznania rozwiązania. Dodatkowo ujednolicenie komponentów oraz drobne zmiany wizualne jak przeniesienie ikony (strzałki) z Secondary buttona do Primary Buttona pozytywnie wpłynie na konwersję sugerując, który button należy wcisnąć.</p>
+</div>
+</div>
+
+<div class="before-after-screens anim-item">
+<div class="ba-screen">
+<div class="image-slot" data-src="screens/tos-before.png" data-label="Przed zmianą" data-ratio="16:10"></div>
+<span class="ba-screen__caption">Przed zmianą</span>
+</div>
+<div class="ba-screen">
+<div class="image-slot" data-src="screens/tos-after.png" data-label="Po zmianie" data-ratio="16:10"></div>
+<span class="ba-screen__caption">Po zmianie</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 07 — CTA -->
+<section class="slide" id="slide-07" data-slide="07" aria-label="Slajd 7: Poprawa CTA">
+<div class="slide__inner slide--centered anim-stagger">
+<span class="slide__chip anim-item">Slajd 07</span>
+<h2 class="slide__title anim-item">Poprawa dostępności przycisku CTA</h2>
+
+<div class="two-col-cards anim-item">
+<div class="optim-card">
+<div class="optim-card__label">Optymalizacja</div>
+<p>Dodanie dodatkowej sekcji CTA w <strong>mega menu</strong>. Dodanie małymi literami pod przyciskiem CTA dodatkowych informacji zachęcających do kliknięcia.</p>
+</div>
+<div class="why-card">
+<div class="why-card__label">Dlaczego to zadziała</div>
+<p>Użytkownik może chcieć skonwertować w <strong>dowolnym momencie</strong> czytania. Sticky header sprawia, że nie musi szukać przycisku. Microcopy uspokaja jego obawy.</p>
+</div>
+</div>
+
+<div class="slide__visual slide__visual--large anim-item" style="width: 100%; margin-top: var(--space-md);">
+<div class="image-slot" data-src="screens/megamenu-06.png" data-label="Mega menu z CTA" data-ratio="16:10"></div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 08 — Z-PATTERN -->
+<section class="slide" id="slide-08" data-slide="08" aria-label="Slajd 8: Z-Pattern">
+<div class="slide__inner anim-stagger">
+<span class="slide__chip anim-item">Slajd 08</span>
+<h2 class="slide__title anim-item">Za dużo podobnych sekcji, za mało progresji w narracji</h2>
+<p class="slide__lead anim-item" style="max-width:none;">
+Sekcje są powtarzalne: obrazek po lewej, copy po prawej. To powoduje efekt: scrolluję, ale nie czuję, że dowiaduję się czegoś nowego. Alternatywą dla takiego układu mogło by być dodnie interaktywności i skondensowanie długiej sekcji benefitów. Poniżej 2 wersje z możliwą optymalizacją. W wersji drugiej obrazek należało by przerobić by był w formacie np. 16:9 a nie 1:1. Lepiej wpisywałby się wizualnie.
+</p>
+
+<div class="before-after-screens anim-item">
+<div class="ba-screen">
+<div class="image-slot" data-src="screens/08-v1.png" data-label="Wersja 1" data-ratio="16:10"></div>
+<span class="ba-screen__caption">Wersja 1</span>
+</div>
+<div class="ba-screen">
+<div class="image-slot" data-src="screens/08-v2.png" data-label="Wersja 2" data-ratio="16:10"></div>
+<span class="ba-screen__caption">Wersja 2</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 09 — PERSONY -->
+<section class="slide" id="slide-09" data-slide="09" aria-label="Slajd 09: Persony">
+<div class="slide__inner slide--centered anim-stagger">
+<span class="slide__chip anim-item">Slajd 09</span>
+<h2 class="slide__title anim-item">Jedna strona próbuje mówić do kilku person jednocześnie</h2>
+<p class="slide__lead anim-item">Ta sama narracja obsługuje DevOps Managera, CTO/CIO i security leadów. Nikt nie widzi od razu „swojego" use case'u. Kolejnym możliwym rozwiązaniem na zbyt powtarzalne sekcje jest podzielenie ich pod konkretny use case.</p>
+
+<div class="persona-tabs anim-item">
+<div class="persona-tab persona-tab--active">
+<span class="persona-tab__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></span>
+<h4>For DevOps</h4>
+<p>Automatyzacja, szybki restore, monitoring</p>
+</div>
+<div class="persona-tab persona-tab--active">
+<span class="persona-tab__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+<h4>For Security</h4>
+<p>Compliance, audytowalność, szyfrowanie</p>
+</div>
+<div class="persona-tab persona-tab--active">
+<span class="persona-tab__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg></span>
+<h4>For Leadership</h4>
+<p>ROI, redukcja ryzyka, strategia</p>
+</div>
+</div>
+
+<div class="impact-row anim-item">
+<div class="impact-item">
+<span class="impact-item__arrow">↑</span>
+<span>views/user</span>
+</div>
+<div class="impact-item">
+<span class="impact-item__arrow">↑</span>
+<span>scroll depth</span>
+</div>
+<div class="impact-item">
+<span class="impact-item__arrow">↑</span>
+<span>konwersja</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 11 — PRZEGRUPOWANIE -->
+<section class="slide" id="slide-10" data-slide="10" aria-label="Slajd 10: Przegrupowanie treści">
+<div class="slide__inner anim-stagger">
+<span class="slide__chip anim-item">Slajd 10</span>
+<h2 class="slide__title anim-item">Co można zrobić dodatkowo?</h2>
+<p class="slide__lead anim-item" style="max-width:none;">Skrócenie i przegrupowanie środkowej części strony. Teraz środek strony sprawia wrażenie długiej listy benefitów o podobnej wadze. Zamiast wielu podobnych bloków 3 większe grupy:</p>
+
+<div class="three-groups anim-item" style="margin-top: var(--space-xl);">
+<div>
+<h3 style="font-size: var(--fs-h3); font-weight: 700; color: var(--color-white); margin-bottom: var(--space-sm);">What GitProtect protects</h3>
+<p style="font-size: var(--fs-body); color: var(--color-text-muted);">Repozytoria, metadata, konfiguracja, inne krytyczne obiekty</p>
+</div>
+<div>
+<h3 style="font-size: var(--fs-h3); font-weight: 700; color: var(--color-white); margin-bottom: var(--space-sm);">How recovery works</h3>
+<p style="font-size: var(--fs-body); color: var(--color-text-muted);">Restore granularny, DR, szybkość odzyskania, scenariusze awarii</p>
+</div>
+<div>
+<h3 style="font-size: var(--fs-h3); font-weight: 700; color: var(--color-white); margin-bottom: var(--space-sm);">Why enterprise teams trust it</h3>
+<p style="font-size: var(--fs-body); color: var(--color-text-muted);">Security, compliance, residency, deployment, auditability</p>
+</div>
+</div>
+
+<div class="insight-box anim-item">
+<p>Każdy scroll przynosi <strong>nową kategorię wiedzy</strong>, a nie „kolejny podobny feature".</p>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 12 — FAQ -->
+<section class="slide" id="slide-11" data-slide="11" aria-label="Slajd 11: FAQ wyżej">
+<div class="slide__inner slide--centered anim-stagger">
+<span class="slide__chip anim-item">Slajd 11</span>
+<h2 class="slide__title anim-item">Przeniesienie FAQ dużo wyżej</h2>
+<p class="slide__lead anim-item">FAQ na końcu strony jest za późno. Po pierwszej lub drugiej sekcji dodać "mini-FAQ" a na końcu strony zostawić pełne FAQ.</p>
+
+<div class="faq-cloud anim-item">
+<span class="faq-chip">What GitHub data is covered?</span>
+<span class="faq-chip">How fast can I restore?</span>
+<span class="faq-chip">Where is backup data stored?</span>
+<span class="faq-chip">Is it compliant for regulated industries?</span>
+<span class="faq-chip">Do I need admin access?</span>
+<span class="faq-chip">Can I try it before talking to sales?</span>
+</div>
+
+<div class="why-card anim-item">
+<div class="why-card__label">Dlaczego to zadziała</div>
+<p>W enterprise użytkownik nie klika trial tylko dlatego, że „produkt wygląda dobrze". Kliknie, kiedy poczuje, że <strong>najważniejsze ryzyka zostały wyjaśnione</strong>.</p>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 13 — MESSAGE MATCH -->
+<section class="slide" id="slide-12" data-slide="12" aria-label="Slajd 12: Message match">
+<div class="slide__inner anim-stagger">
+<span class="slide__chip anim-item">Slajd 12</span>
+<h2 class="slide__title anim-item">Poprawa message match</h2>
+<p class="slide__lead anim-item" style="max-width:none;">Zamiast jednej uniwersalnej wersji landing page'a, przygotować 2–3 warianty w tym samym systemie:</p>
+
+<div class="anim-item" style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); margin-top: var(--space-xl); align-items: start;">
+<div style="display:flex; flex-direction:column; gap: var(--space-md);">
+<div style="background: rgba(37,88,220,0.08); border: 1px solid var(--color-accent); border-radius: var(--radius-lg); padding: var(--space-lg);">
+<p style="font-size: var(--fs-body); font-weight: 700; color: var(--color-white); margin: 0;">GitHub Backup for Healthcare</p>
+</div>
+<div style="background: rgba(37,88,220,0.08); border: 1px solid var(--color-accent); border-radius: var(--radius-lg); padding: var(--space-lg);">
+<p style="font-size: var(--fs-body); font-weight: 700; color: var(--color-white); margin: 0;">GitHub Disaster Recovery for DevOps leaders</p>
+</div>
+<div style="background: rgba(37,88,220,0.08); border: 1px solid var(--color-accent); border-radius: var(--radius-lg); padding: var(--space-lg);">
+<p style="font-size: var(--fs-body); font-weight: 700; color: var(--color-white); margin: 0;">GitHub Security &amp; Compliance for CISO / CTO</p>
+</div>
+</div>
+<div>
+<p style="font-size: var(--fs-body); color: var(--color-text-muted); margin-bottom: var(--space-md);">Nie trzeba robić nowego designu. Wystarczy podmiana:</p>
+<ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap: var(--space-sm);">
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>headline</li>
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>subheadline</li>
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>pierwszych proof pointów</li>
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>case study</li>
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>CTA context</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 13 — SPÓJNOŚĆ KOMPONENTÓW -->
+<section class="slide" id="slide-13" data-slide="13" aria-label="Slajd 13: Spójność komponentów">
+<div class="slide__inner anim-stagger">
+<span class="slide__chip anim-item">Slajd 13</span>
+<h2 class="slide__title anim-item" style="margin-bottom: 40px;">Poprawa spójności komponentów</h2>
+
+<div class="consistency-layout anim-item">
+<div class="consistency-col">
+<h3 class="consistency-col__title consistency-col__title--problems" style="margin-bottom: 24px;">Problemy</h3>
+<ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap: var(--space-sm);">
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-danger)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Dużo kart o podobnej funkcji, ale różnej „wadze" wizualnej</li>
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-danger)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Nierówna hierarchia nagłówków</li>
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-danger)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Miejscami duże puste przestrzenie między blokami</li>
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-danger)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Podobny pattern sekcji powtarzany zbyt długo</li>
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-danger)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>CTA powinny mieć bardziej konsekwentną hierarchię</li>
+</ul>
+</div>
+<div class="consistency-col">
+<h3 class="consistency-col__title consistency-col__title--solutions" style="margin-bottom: 24px;">Rozwiązania</h3>
+<ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap: var(--space-sm);">
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Jeden system spacingu sekcji</li>
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Jeden system kart feature / proof</li>
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Jeden primary CTA style i jeden secondary</li>
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Konsekwentna typografia H1 / H2 / H3</li>
+<li style="display:flex; align-items:center; gap: var(--space-sm); font-size: var(--fs-body); color: var(--color-text);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mniejsze rozproszenie przez dekoracje</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 14 — REWIND -->
+<section class="slide" id="slide-14" data-slide="14" aria-label="Slajd 14: Rewind">
+<div class="slide__inner slide--split anim-stagger" style="grid-template-columns:1fr 500px;">
+<div class="slide__content anim-item">
+<span class="slide__chip">Slajd 14</span>
+<p class="slide__lead">Analiza konkurencji</p>
+<h2 class="slide__title">Rewind</h2>
+<div class="competitor-card__rating" style="margin-bottom: 16px;">
+<span class="dot dot--yellow"></span>
+<span class="dot dot--yellow"></span>
+<span class="dot dot--gray"></span>
+</div>
+<p class="slide__lead">Mało ciekawy design, ale dobrze zbudowana sekcja hero mówiąca szybko o benefitach. Wysoko postawiony social proof. Znacznie krótsza strona, ale pomija sporo ważnych informacji.</p>
+</div>
+<div class="slide__visual anim-item" style="width:500px;flex-shrink:0;">
+<div class="image-slot" data-src="screens/rewind.png" data-label="Rewind — screenshot strony" data-ratio="16:10"></div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 15 — REVYZ -->
+<section class="slide" id="slide-15" data-slide="15" aria-label="Slajd 15: Revyz">
+<div class="slide__inner slide--reverse-split anim-stagger" style="grid-template-columns:500px 1fr;">
+<div class="slide__visual anim-item" style="width:500px;flex-shrink:0;">
+<div class="image-slot" data-src="screens/revyz.png" data-label="Revyz — screenshot strony" data-ratio="16:10"></div>
+</div>
+<div class="slide__content anim-item">
+<span class="slide__chip">Slajd 15</span>
+<p class="slide__lead">Analiza konkurencji</p>
+<h2 class="slide__title">Revyz</h2>
+<div class="competitor-card__rating" style="margin-bottom: 16px;">
+<span class="dot dot--red"></span>
+<span class="dot dot--gray"></span>
+<span class="dot dot--gray"></span>
+</div>
+<p class="slide__lead">Design strony odstrasza od pierwszej sekundy, nie budzi zaufania.</p>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 16 — HYCU -->
+<section class="slide" id="slide-16" data-slide="16" aria-label="Slajd 16: HYCU">
+<div class="slide__inner slide--split anim-stagger" style="grid-template-columns:1fr 500px;">
+<div class="slide__content anim-item">
+<span class="slide__chip">Slajd 16</span>
+<p class="slide__lead">Analiza konkurencji</p>
+<h2 class="slide__title">HYCU</h2>
+<div class="competitor-card__rating" style="margin-bottom: 16px;">
+<span class="dot dot--yellow"></span>
+<span class="dot dot--yellow"></span>
+<span class="dot dot--gray"></span>
+</div>
+<p class="slide__lead">Nieszablonowa kolorystyka i wideo z aplikacjami, ale źle zbudowane hero section z mało widocznym CTA w nav barze. Aplikacja nie wygląda nowocześnie.</p>
+</div>
+<div class="slide__visual anim-item" style="width:500px;flex-shrink:0;">
+<div class="image-slot" data-src="screens/hycu.png" data-label="HYCU — screenshot strony" data-ratio="16:10"></div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 18 — KEEPIT -->
+<section class="slide" id="slide-17" data-slide="17" aria-label="Slajd 17: Keepit">
+<div class="slide__inner slide--reverse-split anim-stagger" style="grid-template-columns:500px 1fr;">
+<div class="slide__visual anim-item" style="width:500px;flex-shrink:0;">
+<div class="image-slot" data-src="screens/keepit.png" data-label="Keepit — screenshot strony" data-ratio="16:10"></div>
+</div>
+<div class="slide__content anim-item">
+<span class="slide__chip">Slajd 17</span>
+<p class="slide__lead">Analiza konkurencji</p>
+<h2 class="slide__title">Keepit</h2>
+<div class="competitor-card__rating" style="margin-bottom: 16px;">
+<span class="dot dot--yellow"></span>
+<span class="dot dot--yellow"></span>
+<span class="dot dot--yellow"></span>
+</div>
+<p class="slide__lead">Animacje na plus choć nieprofesjonalne. Dobry opis hero. Widać co robi aplikacja i jak może pomóc użytkownikowi. Dobrze widoczne pomarańczowe CTA, ale pomieszana hierarchia.</p>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 18 — KONTAKT -->
+<section class="slide" id="slide-18" data-slide="18" aria-label="Slajd 18: Kontakt">
+<div class="slide__inner slide--centered anim-stagger" style="justify-content:center; align-items:center; text-align:center;">
+<h2 class="slide__title anim-item" style="font-size: clamp(2.5rem, 5vw, 4rem);">Dziękuję za uwagę.</h2>
+<p class="slide__lead anim-item" style="max-width:none; font-size: var(--fs-h2); font-weight:400;">Zapraszam do kontaktu.</p>
+<div class="anim-item" style="display:flex; flex-direction:column; gap: var(--space-lg); margin-top: var(--space-xl); align-items:center;">
+<div style="display:flex; align-items:center; gap: var(--space-md); font-size: var(--fs-h3); color: var(--color-text);">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+<a href="mailto:d.delanowski@gmail.com" style="color: var(--color-white); text-decoration: none;">d.delanowski@gmail.com</a>
+</div>
+<div style="display:flex; align-items:center; gap: var(--space-md); font-size: var(--fs-h3); color: var(--color-text);">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+<a href="tel:+48667145534" style="color: var(--color-white); text-decoration: none;">667 145 534</a>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+<button class="lightbox__close" id="lightboxClose" aria-label="Zamknij">&times;</button>
+<img class="lightbox__img" id="lightboxImg" src="" alt="">
+<span class="lightbox__caption" id="lightboxCaption"></span>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav" aria-label="Nawigacja prezentacji">
+<button class="nav__btn nav__btn--prev" id="btnPrev" aria-label="Poprzedni slajd" disabled>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span>Wstecz</span>
+</button>
+<span class="nav__counter" id="counter" aria-live="polite">01 / 18</span>
+<button class="nav__btn nav__btn--next" id="btnNext" aria-label="Następny slajd">
+<span>Dalej</span>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>
