@@ -277,7 +277,8 @@ body::after {
   width: 100%;
   max-width: var(--slide-max-w);
   max-height: calc(100vh - var(--nav-height) - var(--space-3xl));
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .slide__inner::-webkit-scrollbar { width: 4px; }
