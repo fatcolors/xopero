@@ -300,6 +300,14 @@ body::after {
   align-items: start;
 }
 
+.slide--split-wide {
+  grid-template-columns: 1fr 500px;
+}
+
+.slide--reverse-split-wide {
+  grid-template-columns: 500px 1fr;
+}
+
 .slide--centered {
   display: flex;
   flex-direction: column;
@@ -1228,11 +1236,13 @@ body::after {
   .slide--cover__layout,
   .slide--split,
   .slide--reverse-split,
+  .slide--split-wide,
+  .slide--reverse-split-wide,
   .metrics-split,
   .two-col-cards,
   .consistency-layout,
   .before-after-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .persona-tabs,
