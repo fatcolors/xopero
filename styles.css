@@ -312,7 +312,12 @@ body::after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   gap: var(--space-lg);
+}
+
+.slide--stacked .insight-box {
+  text-align: left;
 }
 
 .slide--stacked .slide__visual .image-slot {
