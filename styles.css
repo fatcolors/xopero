@@ -322,6 +322,8 @@ body::after {
 
 .slide--stacked .slide__visual .image-slot {
   max-height: 340px;
+  width: 800px;
+  max-width: 100%;
   aspect-ratio: 16/10;
 }
 
