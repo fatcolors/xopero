@@ -281,9 +281,9 @@ body::after {
   overflow-x: hidden;
 }
 
-.slide__inner::-webkit-scrollbar { width: 4px; }
-.slide__inner::-webkit-scrollbar-track { background: transparent; }
-.slide__inner::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 2px; }
+/* Hide scrollbar but keep scroll functionality */
+.slide__inner::-webkit-scrollbar { display: none; }
+.slide__inner { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* ---- Layout Variants ---- */
 .slide--split {
@@ -306,6 +306,17 @@ body::after {
 
 .slide--reverse-split-wide {
   grid-template-columns: 500px 1fr;
+}
+
+.slide--stacked {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.slide--stacked .slide__visual .image-slot {
+  max-height: 280px;
+  aspect-ratio: 16/10;
 }
 
 .slide--centered {
